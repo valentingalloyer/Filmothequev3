@@ -1,0 +1,102 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/commun.css}">
+
+</head>
+<body>
+	<th:block th:replace="header.html" />
+	<div class="container">
+		<h1 class="bleu">Ajout d'un film</h1>
+		<br>
+		<p class = "erreur" th:if="${erreur}" th:text="${erreur}"></p>
+		<br>
+		<div>
+			<form action="ajouter" method="POST"
+				class="form-horizontal" th:object="${film}">
+
+				<div class="form-group">
+					<label for="titre" class="col-xs-2 control-label">Titre :</label>
+					<div class="col-xs-10">
+						<input th:field="*{titre}" placeholder="Titre du film ..." class="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="titre" class="col-xs-2 control-label">Année :</label>
+					<div class="col-xs-10">
+						<input th:field="*{annee}" placeholder="Année de sortie ..." class="form-control" />
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label for="titre" class="col-xs-2 control-label">Genre :</label>
+					<div class="col-xs-10">
+						<select th:field="*{genre.id}" class="form-control">
+							<option th:each = "g : ${listeG}" th:value="${g.id}" th:text="${g.libelle}"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="titre" class="col-xs-2 control-label">Réalisateur
+						:</label>
+					<div class="col-xs-5">
+						<input th:field="*{realisateur.prenom}" placeholder="prénom"
+							class="form-control" />
+					</div>
+					<div class="col-xs-5">
+						<input th:field="*{realisateur.nom}"  placeholder="nom" class="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="titre" class="col-xs-2 control-label">Durée (en minutes) :</label>
+					<div class="col-xs-10">
+						<input th:field="*{duree}" placeholder="Durée du film (en minutes) ..." class="form-control" />
+					</div>
+				</div>
+				
+				<div class="form-group" th:each="i : ${#numbers.sequence(0, 4)}">
+					<label for="titre" class="col-xs-2 control-label"
+						th:text="${'Acteur ' + (i + 1)}"></label>
+					<div class="col-xs-5">
+						<input th:name="${'acteurs['+i+'].prenom'}" placeholder="prénom" class="form-control" />
+					</div>
+					<div class="col-xs-5">
+						<input th:name="${'acteurs['+i+'].nom'}" placeholder="nom" class="form-control" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="synopsis" class="col-xs-2 control-label">Synopsis
+						:</label>
+					<div class="col-xs-10">
+						<textarea rows="5" th:field="*{synopsis}" placeholder="Résumé et commentaires ..." class="form-control"></textarea>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-xs-offset-2 col-xs-10">
+						<button type="submit" class="btn btn-primary">Envoyer</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<th:block th:replace="footer.html" />
+
+</body>
+</html>

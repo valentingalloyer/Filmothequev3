@@ -1,0 +1,68 @@
+
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" th:href="@{/css/commun.css}">
+	
+	
+
+<style type="text/css">
+
+
+.centre {
+	text-align: center;
+}
+
+
+img {
+	vertical-align: bottom;
+}
+</style>
+</head>
+<body>
+	<th:block th:replace="header.html" />
+
+	<div class="container">
+	
+	<p th:if = "${erreur}" th:text = "${erreur}">
+		
+	</p>
+	
+	<h1 class="bleu">Liste des films<span class="badge btn-primary gros pull-right" th:text="${#arrays.length(listeF)}"></span></h1>
+	
+	<table class="table table-hover table-striped">
+		<tr>
+			<th>Titre</th>
+			<th>Année</th>
+			<th>Genre</th>
+			<th>Réalisateur</th>
+			<th>Durée</th>
+			<th th:if="${@membre.id != 0}">Avis</th>
+		</tr>
+		<tr th:each = "f : ${listeF}">
+		
+			<td><a th:href="@{afficher(id=${f.id})}"><span th:text="${f.titre}"></span></a></td>
+			<td th:text="${f.annee}"></td>
+			<td th:text="${f.genre.libelle}"></td>
+			<td th:text="${f.realisateur.prenom + ' ' + f.realisateur.nom}"></td>
+			<td th:text="${f.duree}"></td>
+			<td th:if="${@membre.id != 0}" >
+			<a th:href="@{/ajouteravis/{id}(id=${f.id})}"><img th:src="@{/images/plus-circle.svg}" alt="Ajouter un avis"/></a></td>
+		</tr>
+	</table>
+
+
+	</div>
+		
+		<th:block th:replace="footer.html" />
+
+
+</body>
+</html>

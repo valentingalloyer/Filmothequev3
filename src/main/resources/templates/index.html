@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" th:href="@{/css/commun.css}">
+	
+
+</head>
+<body>
+
+	<th:block th:replace="header.html" />
+	
+	<div class="container">
+		<div class="alert alert-success"  th:if="${message}" th:text="${message}"></div>
+		<div class="alert alert-warning"  th:if="${warning}" th:text="${warning}"></div>
+		<div class="alert alert-danger"  th:if="${erreur}" th:text="${erreur}"></div>
+		<div class="jumbotron">
+	 			 <h1>Bienvenue <small>dans notre application de gestion de films</small></h1>
+	 			 <p>Vous allez pouvoir visualiser vos plus grands chefs-d'oeuvres, mais aussi ajouter, modifier ou supprimer.</p>
+	 			 <p>Expérience enrichissante garantie.</p>
+	 			 <p><a class="btn btn-primary btn-lg" role="button" th:href="@{/lister}">En savoir plus ...</a></p>
+		</div>
+	</div>
+	
+	<th:block th:replace="footer.html" />
+
+
+</body>
+</html>

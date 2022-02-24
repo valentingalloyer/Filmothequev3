@@ -1,0 +1,57 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/commun.css}">
+
+</head>
+<body>
+	<th:block th:replace="header.html" />
+	<div class="container">
+		<h1 class="bleu">Connexion</h1>
+		<br>
+		<p class="erreur" th:if="${erreur}" th:text="${erreur}"></p>
+		<br>
+		<div>
+			<form action="connect" method="POST" class="form-horizontal"
+				th:object="${login}">
+
+				<div class="form-group">
+					<label for="titre" class="col-xs-2 control-label">Utilisateur
+						:</label>
+					<div class="col-xs-10">
+						<input th:field="*{username}" placeholder="Votre identifiant"
+							class="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="titre" class="col-xs-2 control-label">Mot de
+						passe :</label>
+					<div class="col-xs-10">
+						<input type="password" th:field="*{password}" placeholder="Votre mot de passe ..."
+							class="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-xs-offset-2 col-xs-10">
+						<button type="submit" class="btn btn-primary">Envoyer</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<th:block th:replace="footer.html" />
+
+</body>
+</html>
