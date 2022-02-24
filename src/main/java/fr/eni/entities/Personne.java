@@ -2,14 +2,12 @@ package fr.eni.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
-public class Personne {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Personne {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

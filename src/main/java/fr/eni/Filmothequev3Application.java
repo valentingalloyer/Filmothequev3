@@ -49,10 +49,10 @@ public class Filmothequev3Application implements CommandLineRunner {
 		genreRepository.save(g5);
 		genreRepository.save(g6);
 
-		List<Personne> acteurs1 = new ArrayList<Personne>();
-		Personne a1 = new Personne("Belmondo", "Jean-Paul");
-		Personne a2 = new Personne("Anconina", "Richard");
-		Personne a3 = new Personne("Belmondo", "Jean-Paul");
+		List<Acteur> acteurs1 = new ArrayList<Acteur>();
+		Acteur a1 = new Acteur("Belmondo", "Jean-Paul");
+		Acteur a2 = new Acteur("Anconina", "Richard");
+		Acteur a3 = new Acteur("Belmondo", "Jean-Paul");
 //		personneRepository.save(a1);
 //		personneRepository.save(a2);
 //		personneRepository.save(a3);
@@ -60,7 +60,7 @@ public class Filmothequev3Application implements CommandLineRunner {
 		acteurs1.add(a2);
 		acteurs1.add(a3);
 
-		Personne r1 = new Personne("Lelouch", "Claude");
+		Realisateur r1 = new Realisateur("Lelouch", "Claude");
 //		personneRepository.save(r1);
 		Film f1 = new Film("Itinéraire d'un enfant gâté",
 				1988,
@@ -74,11 +74,11 @@ public class Filmothequev3Application implements CommandLineRunner {
 		filmRepository.save(f1);
 
 
-		List<Personne> acteurs2 = new ArrayList<Personne>();
-		Personne a11 = new Personne("Chabat", "Alain");
-		Personne a12 = new Personne("Lauby", "Chantal");
-		Personne a13 = new Personne("Farrugia", "Dominique-Paul");
-		Personne a14 = new Personne("Darmon", "Gérard");
+		List<Acteur> acteurs2 = new ArrayList<Acteur>();
+		Acteur a11 = new Acteur("Chabat", "Alain");
+		Acteur a12 = new Acteur("Lauby", "Chantal");
+		Acteur a13 = new Acteur("Farrugia", "Dominique-Paul");
+		Acteur a14 = new Acteur("Darmon", "Gérard");
 //		personneRepository.save(a11);
 //		personneRepository.save(a12);
 //		personneRepository.save(a13);
@@ -88,7 +88,7 @@ public class Filmothequev3Application implements CommandLineRunner {
 		acteurs2.add(a13);
 		acteurs2.add(a14);
 //		acteurs2.add(a1);
-		Personne r2 = new Personne("Berberian", "Alain");
+		Realisateur r2 = new Realisateur("Berberian", "Alain");
 //		personneRepository.save(r2);
 		Film f2 = new Film("La Cité de la peur",
 				1994,

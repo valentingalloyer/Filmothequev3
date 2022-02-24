@@ -4,16 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import fr.eni.entities.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.SessionScope;
 
-import fr.eni.entities.Avis;
-import fr.eni.entities.Catalogue;
-import fr.eni.entities.Film;
-import fr.eni.entities.Genre;
-import fr.eni.entities.Membre;
-import fr.eni.entities.Personne;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -40,10 +35,10 @@ public class ApplicationConfig {
 		Catalogue c = new Catalogue();
 		List<Genre> listeG = getGenres();
 		
-		List<Personne> acteurs1 = new ArrayList<Personne>();
-		acteurs1.add(new Personne("Belmondo", "Jean-Paul"));
-		acteurs1.add(new Personne("Anconina", "Richard"));
-		acteurs1.add(new Personne("L.", "Marie-Sophie"));
+		List<Acteur> acteurs1 = new ArrayList<Acteur>();
+		acteurs1.add(new Acteur("Belmondo", "Jean-Paul"));
+		acteurs1.add(new Acteur("Anconina", "Richard"));
+		acteurs1.add(new Acteur("L.", "Marie-Sophie"));
 		Film f1 = new Film(1, "Itinéraire d'un enfant gâté", 
 							1988, 
 							125, 
@@ -51,17 +46,17 @@ public class ApplicationConfig {
 							listeG.get(4), 
 							new ArrayList<Avis>(), 
 							acteurs1, 
-							new Personne("Lelouch", "Claude"));
+							new Realisateur("Lelouch", "Claude"));
 		
 		List<Film> listeF = new ArrayList<Film>();
 		listeF.add(f1);
 		
 		
-		List<Personne> acteurs2 = new ArrayList<Personne>();
-		acteurs2.add(new Personne("Chabat", "Alain"));
-		acteurs2.add(new Personne("Lauby", "Chantal"));
-		acteurs2.add(new Personne("Farrugia", "Dominique"));
-		acteurs2.add(new Personne("Darmon", "Gérard"));
+		List<Acteur> acteurs2 = new ArrayList<Acteur>();
+		acteurs2.add(new Acteur("Chabat", "Alain"));
+		acteurs2.add(new Acteur("Lauby", "Chantal"));
+		acteurs2.add(new Acteur("Farrugia", "Dominique"));
+		acteurs2.add(new Acteur("Darmon", "Gérard"));
 		Film f2 = new Film(2, "La Cité de la peur", 
 							1994, 
 							119, 
@@ -69,7 +64,7 @@ public class ApplicationConfig {
 							listeG.get(0), 
 							new ArrayList<Avis>(), 
 							acteurs2, 
-							new Personne("Berberian", "Alain"));
+							new Realisateur("Berberian", "Alain"));
 		
 		listeF.add(f2);
 		c.setFilms(listeF);

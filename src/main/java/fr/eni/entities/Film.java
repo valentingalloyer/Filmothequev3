@@ -41,10 +41,10 @@ public class Film {
 	private List<Avis> listeAvis;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Personne> acteurs;
+	private List<Acteur> acteurs;
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	private Personne realisateur;
+	private Realisateur realisateur;
 
 	public Film() {
 		setDuree(100);
@@ -53,7 +53,7 @@ public class Film {
 		setActeurs(null);
 	}
 	public Film(String titre, int annee, int duree, String synopsis, Genre genre, List<Avis> listeAvis,
-			List<Personne> acteurs, Personne realisateur) {
+			List<Acteur> acteurs, Realisateur realisateur) {
 		this.titre = titre;
 		this.annee = annee;
 		this.duree = duree;
@@ -65,7 +65,7 @@ public class Film {
 	}
 
 	public Film(int id, String titre, int annee, int duree, String synopsis, Genre genre, List<Avis> listeAvis,
-			List<Personne> acteurs, Personne realisateur) {
+			List<Acteur> acteurs, Realisateur realisateur) {
 		this.id = id;
 		this.titre = titre;
 		this.annee = annee;
