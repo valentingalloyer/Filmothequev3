@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css" rel="stylesheet" />
 	<link rel="stylesheet" th:href="@{/css/commun.css}">
 	
 
@@ -21,10 +25,10 @@
 		<div class="alert alert-warning"  th:if="${warning}" th:text="${warning}"></div>
 		<div class="alert alert-danger"  th:if="${erreur}" th:text="${erreur}"></div>
 		<div class="jumbotron">
-	 			 <h1>Bienvenue <small>dans notre application de gestion de films</small></h1>
-	 			 <p>Vous allez pouvoir visualiser vos plus grands chefs-d'oeuvres, mais aussi ajouter, modifier ou supprimer.</p>
-	 			 <p>Expérience enrichissante garantie.</p>
-	 			 <p><a class="btn btn-primary btn-lg" role="button" th:href="@{/lister}">En savoir plus ...</a></p>
+	 			 <h1 th:text="#{bienvenue}"> <small th:text="#{index1}"></small></h1>
+	 			 <p th:text="#{index2}"></p>
+	 			 <p th:text="#{index3}"></p>
+	 			 <p th:text="#{index4}"><a class="btn btn-primary btn-lg" role="button" th:href="@{/lister}"></a></p>
 		</div>
 	</div>
 	

@@ -2,6 +2,7 @@ package fr.eni.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +14,13 @@ import fr.eni.entities.Film;
 import fr.eni.entities.Genre;
 import fr.eni.entities.Membre;
 import fr.eni.entities.Personne;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @Configuration
 public class ApplicationConfig {
-
 
 	@Bean
 	List<Genre> getGenres(){
@@ -85,4 +89,5 @@ public class ApplicationConfig {
 	Membre membre(){
 		return new Membre();
 	}
+
 }

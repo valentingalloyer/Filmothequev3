@@ -35,6 +35,7 @@ public class Filmothequev3Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		/** Liste des genres */
+
 		Genre g1 = new Genre(1, "Comédie");
 		Genre g2 = new Genre(2, "Policier");
 		Genre g3 = new Genre(3, "Thriller");
@@ -98,5 +99,11 @@ public class Filmothequev3Application implements CommandLineRunner {
 				acteurs2,
 				r2);
 		filmRepository.save(f2);
+
+		Membre user = new Membre("user", "user@mail.com", "user", false);
+		Membre admin = new Membre("admin", "admin@mail.com", "admin", true);
+		membreRepository.save(user);
+		membreRepository.save(admin);
+
 	}
 }

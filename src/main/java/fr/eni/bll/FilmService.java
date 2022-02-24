@@ -12,5 +12,8 @@ public interface FilmService {
 	List<Film> listerFilms();
 	List<Genre> listerGenres();
 	void ajouterFilm(Film f) throws BllException;
-	void ajouterAvis(int idFilm, Avis av) throws BllException;
+    void modifierFilm(Film f) throws BllException;
+	void supprimerFilm(int id) throws BllException;
+
+    void ajouterAvis(int idFilm, Avis av) throws BllException;
 }

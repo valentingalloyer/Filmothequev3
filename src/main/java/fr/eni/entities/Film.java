@@ -4,6 +4,11 @@ import lombok.Data;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +20,15 @@ public class Film {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@NotBlank(message = "Le titre est obligatoire")
 	private String titre;
 
+	@Min(1900)
+	@Max(2022)
 	private int annee;
 
+	@Min(10)
+	@Max(300)
 	private int duree;
 
 	@Lob
@@ -37,8 +47,8 @@ public class Film {
 	private Personne realisateur;
 
 	public Film() {
+		setDuree(100);
 		setAnnee(2000);
-		
 		setListeAvis(null);
 		setActeurs(null);
 	}

@@ -1,6 +1,20 @@
 	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
 			<ul class="nav navbar-nav  navbar-foot">
+				<div class="dropdown">
+					<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+						<span  th:if="${#strings.equals(#locale , 'fr')}" class="flag-icon flag-icon-fr" ></span>
+						<span th:if="${#strings.equals(#locale , 'en')}" class="flag-icon flag-icon-gb" ></span>
+						<span th:if="${#strings.equals(#locale , 'es')}" class="flag-icon flag-icon-es" ></span>
+					</a>
+
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a th:text="#{francais}" class="dropdown-item" href="?lang=fr"></a></li>
+						<li><a th:text="#{anglais}" class="dropdown-item" href="?lang=en"></a></li>
+						<li><a th:text="#{espagnol}" class="dropdown-item" href="?lang=es"></a></li>
+
+					</ul>
+				</div>
 				<li class="pull-left"><a>© 2022 Copyright</a></li>
 				<li class="pull-right"><a >Formation Eni Ecole</a></li>		
 			</ul>

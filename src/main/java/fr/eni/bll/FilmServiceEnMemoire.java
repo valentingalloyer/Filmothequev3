@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.eni.entities.Avis;
-import fr.eni.entities.Catalogue;
 import fr.eni.entities.Film;
 import fr.eni.entities.Genre;
 import fr.eni.entities.Membre;
@@ -22,6 +21,9 @@ public class FilmServiceEnMemoire implements FilmService{
 
 	@Autowired
 	GenreRepository genreRepository;
+
+	@Autowired
+	private Membre membre;
 	
 	@Autowired
 	private ConnexionService connexionService;
@@ -32,7 +34,7 @@ public class FilmServiceEnMemoire implements FilmService{
 		if (opt.isPresent()) {
 			return opt.get();
 		} else {
-			throw new BllException("Pas de livre trouvé");
+			throw new BllException("Pas de film trouvé");
 		}
 	}
 
@@ -57,25 +59,44 @@ public class FilmServiceEnMemoire implements FilmService{
 			if (f.getRealisateur() == null || f.getRealisateur().getNom() == null || f.getRealisateur().getNom().isEmpty()) {
 				throw new BllException("Le nom du réalisateur est obligatoire");
 			}
-			
-			// trouver le genre
-			Genre g = trouverGenre(f.getGenre().getId());
-			if (g == null) {
+			if (f.getGenre() == null) {
 				throw new BllException("Le genre est obligatoire");
 			}
-			else {
-				f.setGenre(g);
+
+		}
+		filmRepository.save(f);
+	}
+
+	@Override
+	public void modifierFilm(Film f) throws BllException {
+		if (f == null) {
+			throw new BllException("Le film est null");
+		} else {
+			if (f.getTitre() == null || f.getTitre().trim().isEmpty()) {
+				throw new BllException("Le titre est obligatoire");
+			}
+			if (f.getRealisateur() == null || f.getRealisateur().getNom() == null || f.getRealisateur().getNom().isEmpty()) {
+				throw new BllException("Le nom du réalisateur est obligatoire");
+			}
+			if (f.getGenre() == null) {
+				throw new BllException("Le genre est obligatoire");
 			}
 		}
 		filmRepository.save(f);
 	}
 
 	@Override
+	public void supprimerFilm(int id) throws BllException {
+		this.filmRepository.deleteById(id);
+	}
+
+	@Override
 	public void ajouterAvis(int idFilm, Avis av) throws BllException {
 		Film f = trouverFilm(idFilm);
 		if (f != null) {
-//			av.setAuteur(connexionService.getMembre(membre.getUsername(), membre.getPassword())); TODO
+			av.setAuteur(connexionService.getMembre(membre.getUsername(), membre.getPassword()));
 			f.getListeAvis().add(av);
+			filmRepository.save(f);
 		}
 	}
 

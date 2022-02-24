@@ -2,6 +2,7 @@ package fr.eni.controller;
 
 import javax.servlet.http.HttpSession;
 
+import fr.eni.bll.BllException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class ConnexionController {
 
 	@Autowired
 	private ConnexionService connexionService;
+
+	@Autowired
+	private Membre membre;
 	
 	@GetMapping("/connect")
 	public String connecter(Model model) {
@@ -27,14 +31,14 @@ public class ConnexionController {
 	}
 	
 	@PostMapping("connect")
-	public String connecterPost(@ModelAttribute("login") Membre login, Model model, RedirectAttributes redirectAttributes) {
-		Membre membre = connexionService.getMembre(login.getUsername(), login.getPassword());
-		if (membre != null) {
-//			this.membre.copy(membre);
+	public String connecterPost(@ModelAttribute("login") Membre login, Model model, RedirectAttributes redirectAttributes) throws BllException {
+		try {
+			Membre membre = connexionService.getMembre(login.getUsername(), login.getPassword());
+
+			this.membre.copy(membre);
 			redirectAttributes.addFlashAttribute("message", "Connexion effectuée avec succès");
-			return "redirect:/";
-		}
-		else {
+			return "redirect:/lister";
+		} catch (BllException e){
 			model.addAttribute("erreur", "Identification incorrecte");
 			return "connect";
 		}
